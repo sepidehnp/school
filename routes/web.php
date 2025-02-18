@@ -2,9 +2,10 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AdminController;
-use App\Http\Controllers\AcademicYearController;
 use App\Http\Controllers\ClassesController;
 use App\Http\Controllers\FeeHeadController;
+use App\Http\Controllers\AcademicYearController;
+use App\Http\Controllers\FeeStructureController;
 
 Route::get('/', function () {
     return view('welcome');
@@ -48,6 +49,13 @@ Route::group(['prefix'=>'admin'],function(){
         Route::get('fee-head/edit/{id}', [FeeHeadController::class,'edit'])->name('fee-head.edit');
         Route::post('fee-head/update', [FeeHeadController::class,'update'])->name('fee-head.update');
         Route::get('fee-head/delete/{id}', [FeeHeadController::class,'delete'])->name('fee-head.delete');
+
+
+        //Fee Structure mgmt
+        Route::get('fee-structure/create', [FeeStructureController::class,'index'])->name('fee-structure.create');
+        Route::post('fee-structure/store', [FeeStructureController::class,'store'])->name('fee-structure.store');
+
+
 
     });
 });

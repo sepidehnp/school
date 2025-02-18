@@ -54,8 +54,10 @@ Route::group(['prefix'=>'admin'],function(){
         //Fee Structure mgmt
         Route::get('fee-structure/create', [FeeStructureController::class,'index'])->name('fee-structure.create');
         Route::post('fee-structure/store', [FeeStructureController::class,'store'])->name('fee-structure.store');
-
-
+        Route::get('fee-structure/read', [FeeStructureController::class,'read'])->name('fee-structure.read');
+        Route::get('fee-structure/delete/{id}', [FeeStructureController::class,'delete'])->name('fee-structure.delete');
+        Route::get('fee-structure/edit/{id}', [FeeStructureController::class,'edit'])->name('fee-structure.edit');
+        Route::post('fee-structure/update/{id}', [FeeStructureController::class,'update'])->name('fee-structure.update');
 
     });
 });

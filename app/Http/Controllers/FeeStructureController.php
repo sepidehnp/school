@@ -31,9 +31,19 @@ class FeeStructureController extends Controller
         return redirect()->route('fee-structure.create')->with('success','Fee Structure Added Successfully');
     }
 
-    public function read()
+    public function read(Request $request)
     {
-        $data['feeStructure']= FeeStructure::with(['FeeHead','AcademicYear','classes'])->latest()->get();
+        $feeStructure = FeeStructure::query()->with(['FeeHead','AcademicYear','classes'])->latest();
+        if($request->filled('class_id')){
+            $feeStructure->where('class_id',$request->get('class_id'));
+        }
+        if($request->filled('academic_year_id')){
+            $feeStructure->where('academic_year_id',$request->get('academic_year_id'));
+        }
+       
+        $data['feeStructure'] = $feeStructure->get();
+        $data['classes'] = Classes::all();
+        $data['academic_years'] = AcademicYear::all();
         return view('admin.fee-structure.fee-structure_list',$data);
     }
 

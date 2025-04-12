@@ -2,7 +2,6 @@
 
 @section('customCss')
 <link rel="stylesheet" href="plugins/datatables-bs4/css/dataTables.bootstrap4.min.css">
-
 <link rel="stylesheet" href="plugins/datatables-responsive/css/responsive.bootstrap4.min.css">
 <link rel="stylesheet" href="plugins/datatables-buttons/css/buttons.bootstrap4.min.css">
 
@@ -97,14 +96,14 @@
     <td>{{ $item->mobno }} </td>
     <td>{{ $item->email }} </td>
     <td>{{ $item->created_at }}</td>
-    <td> <a href="{{ route('class.edit',$item->id) }}" class="btn btn-primary">Edit</a></td>
-    <td> <a href="{{ route('class.delete',$item->id) }}" onclick="return confirm('Are you sure want to delete?');" class="btn btn-danger">Delete</a></td>
+    <td> <a href="{{ route('student.edit',$item->id) }}" class="btn btn-primary">Edit</a></td>
+    <td> <a href="{{ route('student.delete',$item->id) }}" onclick="return confirm('Are you sure want to delete?');" class="btn btn-danger">Delete</a></td>
     </tr>
     @endforeach
 
 
     </tbody>
-    <tfoot>
+    {{-- <tfoot>
     <tr>
     <th>Rendering engine</th>
     <th>Browser</th>
@@ -112,7 +111,7 @@
     <th>Engine version</th>
     <th>CSS grade</th>
     </tr>
-    </tfoot>
+    </tfoot> --}}
     </table>
     </div>
 

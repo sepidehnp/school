@@ -27,6 +27,8 @@ Route::group(['prefix'=>'student'],function(){
 
      Route::get('dashboard', [UserController::class,'dashboard'])->name('student.dashboard');
      Route::get('logout', [UserController::class,'logout'])->name('student.logout');
+     Route::get('change-password', [UserController::class,'changePassword'])->name('student.changePassword');
+     Route::post('update-password', [UserController::class,'updatePassword'])->name('student.updatePassword');
    });
 });
 

@@ -7,6 +7,7 @@ use App\Http\Controllers\ClassesController;
 use App\Http\Controllers\FeeHeadController;
 use App\Http\Controllers\StudentController;
 use App\Http\Controllers\AcademicYearController;
+use App\Http\Controllers\AnnouncementController;
 use App\Http\Controllers\FeeStructureController;
 
 Route::get('/', function () {
@@ -53,6 +54,11 @@ Route::group(['prefix'=>'admin'],function(){
         Route::get('academic-year/delete/{id}', [AcademicYearController::class,'delete'])->name('academic-year.delete');
         Route::get('academic-year/edit/{id}', [AcademicYearController::class,'edit'])->name('academic-year.edit');
         Route::post('academic-year/update', [AcademicYearController::class,'update'])->name('academic-year.update');
+
+        //Announcements managment
+        Route::get('announcement/create', [AnnouncementController::class,'index'])->name('announcement.create');
+        Route::post('announcement/store', [AnnouncementController::class,'store'])->name('announcement.store');
+        Route::get('announcement/read', [AnnouncementController::class,'read'])->name('announcement.read');
 
         //class managment
         Route::get('class/create', [ClassesController::class,'index'])->name('class.create');

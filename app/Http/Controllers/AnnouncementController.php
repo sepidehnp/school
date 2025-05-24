@@ -38,24 +38,32 @@ class AnnouncementController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Announcement $announcement)
+    public function edit($id)
     {
-        //
+        $data['announcement'] = Announcement::find($id);
+        return view('admin.announcement.edit_form',$data);
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Announcement $announcement)
+    public function update(Request $request, $id)
     {
-        //
+        $announcement =  Announcement::find($id);
+        $announcement->message = $request->message;
+        $announcement->type = $request->type;
+        $announcement->update();
+        return redirect()->route('announcement.read')->with('success','Announcement broadcast detail updated successfully');
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Announcement $announcement)
+    public function delete($id)
     {
-        //
+        $announcement =  Announcement::find($id);
+        $announcement -> delete();
+        return redirect()->route('announcement.read')->with('success','Announcement broadcast detail deleted successfully');
+
     }
 }
